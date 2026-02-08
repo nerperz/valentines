@@ -5,7 +5,7 @@ const noBtn = document.querySelector(".no-btn");
 const modal = document.getElementById("formModal");
 const sendBtn = document.getElementById("sendBtn");
 
-// 1. Fixed GIF Link
+// Stable GIF link
 const happyGif = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3Y2Ixdm80N2RyeGZ3Y2Ixdm80N2RyeGZ3Y2Ixdm80JnB0PTYmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PXM/S9SOfqO8sZInW89I69/giphy.gif";
 
 yesBtn.addEventListener("click", () => {
@@ -17,20 +17,22 @@ yesBtn.addEventListener("click", () => {
     }, 1000);
 });
 
-// 2. The Run-away Button
+// Improved Run-away logic
 noBtn.addEventListener('mouseover', () => {
-    noBtn.style.position = "absolute";
-    const maxX = window.innerWidth - noBtn.offsetWidth;
-    const maxY = window.innerHeight - noBtn.offsetHeight;
+    // Set position to fixed so it stays relative to the whole screen
+    noBtn.style.position = "fixed"; 
+    
+    // Calculate space, avoiding edges
+    const maxX = window.innerWidth - noBtn.offsetWidth - 50;
+    const maxY = window.innerHeight - noBtn.offsetHeight - 50;
 
-    const randomX = Math.floor(Math.random() * maxX);
-    const randomY = Math.floor(Math.random() * maxY);
+    const randomX = Math.max(50, Math.floor(Math.random() * maxX));
+    const randomY = Math.max(50, Math.floor(Math.random() * maxY));
 
     noBtn.style.left = randomX + "px";
     noBtn.style.top = randomY + "px";
 });
 
-// 3. The "Send" logic with the instruction message
 sendBtn.addEventListener("click", () => {
     const when = document.getElementById("dateWhen").value;
     const where = document.getElementById("dateWhere").value;
@@ -41,7 +43,7 @@ sendBtn.addEventListener("click", () => {
         return;
     }
 
-    // Download the Excel/CSV file
+    // CSV Generation
     const csvData = `When,Where,Time\n${when},${where},${time}`;
     const blob = new Blob([csvData], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
@@ -50,10 +52,9 @@ sendBtn.addEventListener("click", () => {
     a.download = 'valentine_date.csv';
     a.click();
 
-    // Close the form and show the final instruction
     modal.style.display = "none";
-    alert("DONE! Now, please send the downloaded file to the person who sent you this link! 💌");
     
-    // Optional: Change the header one last time
-    question.innerHTML = "Can't wait to see you! Check your downloads!";
+    // THE FINAL INSTRUCTION MESSAGE
+    question.innerHTML = "PLS SEND THE FILE TO THE PERSON WHO SENT U THE LINK! 💌";
+    alert("DONE! PLEASE SEND THE DOWNLOADED FILE TO THE PERSON WHO SENT U THE LINK!");
 });
