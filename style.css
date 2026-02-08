@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -9,43 +10,111 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: black;
+    background: radial-gradient(circle, #ffdee9 0%, #b5fffc 100%); /* Soft Pink/Blue gradient */
+    overflow: hidden;
 }
+
+.wrapper {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    border: 2px solid white;
+}
+
 h2 {
-    font-size: 2cm;
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
     color: #e94d58;
-    margin: 15px 0;
+    margin-bottom: 20px;
 }
-.btn-group {
-    width: 100%;
-    height: 40px;
+
+.gif-container {
+    height: 200px;
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    align-items: center;
+    margin-bottom: 20px;
 }
-button {
-    position: absolute;
-    width: 150px;
-    height: inherit;
-    color: white;
-    font-size: 1cm;
-    border-radius: 30px;
-    outline: none;
-    cursor: pointer;
-    box-shadow: 0 2px 4px gray;
-    border: 2px solid #e94d58;
-    font-size: 1cm;
-}
-button:nth-child(1) {
-    margin-left: -200px;
-    background: #e94d58;
-}
-button:nth-child(2) {
-    margin-right: -200px;
-    background: #e94d58;
-}
+
 .gif {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
+    max-height: 100%;
+    border-radius: 15px;
+}
+
+.btn-group {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+button {
+    width: 120px;
+    height: 50px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(233, 77, 88, 0.3);
+}
+
+.oo-btn {
+    background: #e94d58;
+}
+
+/* This is the important change for the moving button */
+.diri-btn {
+    background: #555;
+    position: absolute; /* Needed for the JS movement */
+    left: 55%; /* Starting position */
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+}
+
+.modal-content input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+}
+
+#sendBtn {
+    width: 100%;
+    background: #2ecc71;
 }
