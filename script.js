@@ -16,27 +16,27 @@ yesBtn.addEventListener("click", () => {
     }, 1000);
 });
 
-noBtn.addEventListener('mouseover', () => {
-    // 1. Switch to fixed position ONLY when hovered
-    noBtn.style.position = "fixed"; 
+noBtn.addEventListener('mouseover', ()=> {
 
-    // 2. Get button dimensions
-    const btnWidth = noBtn.offsetWidth;
-    const btnHeight = noBtn.offsetHeight;
+    const noBtnRect = noBtn.getBoundingClientRect();
 
-    // 3. Define safe boundaries (padding of 20px from edges)
-    const padding = 20;
-    const maxX = window.innerWidth - btnWidth - padding;
-    const maxY = window.innerHeight - btnHeight - padding;
+    const maxX = window.innerWidth - noBtnRect.width;
 
-    // 4. Ensure the random number is at least 'padding' so it doesn't hit the left/top edge
-    const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
-    const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+    const maxY = window.innerHeight - noBtnRect.height;
 
-    // 5. Apply the new position
+
+
+    const randomX = Math.floor(Math.random() * maxX);
+
+    const randomY = Math.floor(Math.random() * maxY);
+
+
+
     noBtn.style.left = randomX + "px";
+
     noBtn.style.top = randomY + "px";
-});
+
+})
 // Close modal if user clicks outside of it
 window.onclick = function(event) {
     if (event.target == modal) {
