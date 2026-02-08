@@ -4,7 +4,7 @@ const yesBtn = document.querySelector(".yes-btn");
 const noBtn = document.querySelector(".no-btn");
 const modal = document.getElementById("formModal");
 
-const happyGif = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3Y2Ixdm80N2RyeGZ3Y2Ixdm80N2RyeGZ3Y2Ixdm80JnB0PTYmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PXM/S9SOfqO8sZInW89I69/giphy.gif";
+const happyGif = "https://media1.tenor.com/m/OOMl9O8GdYUAAAAC/spongebob-patrick-star.gif";
 
 yesBtn.addEventListener("click", () => {
     question.innerHTML = "YAYYY 💗💗💗💓💓";
