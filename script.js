@@ -3,7 +3,6 @@ const gif = document.querySelector(".gif");
 const yesBtn = document.querySelector(".yes-btn");
 const noBtn = document.querySelector(".no-btn");
 const modal = document.getElementById("formModal");
-const sendBtn = document.getElementById("sendBtn");
 
 const happyGif = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3Y2Ixdm80N2RyeGZ3Y2Ixdm80N2RyeGZ3Y2Ixdm80JnB0PTYmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PXM/S9SOfqO8sZInW89I69/giphy.gif";
 
@@ -11,26 +10,27 @@ yesBtn.addEventListener("click", () => {
     question.innerHTML = "YAYYY 💗💗💗💓💓";
     gif.src = happyGif;
     
+    // Show the modal after a short delay
     setTimeout(() => {
         modal.style.display = "flex";
     }, 1000);
 });
 
-// "Hell Naw" Run-away Logic
 noBtn.addEventListener('mouseover', () => {
-    const noBtnRect = noBtn.getBoundingClientRect();
-    const maxX = window.innerWidth - noBtnRect.width;
-    const maxY = window.innerHeight - noBtnRect.height;
+    // Calculate the button size so it stays inside the edges
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
 
-    // Generate random positions within the visible viewport
+    // Boundary calculation
+    const maxX = window.innerWidth - btnWidth - 20;
+    const maxY = window.innerHeight - btnHeight - 20;
+
     const randomX = Math.floor(Math.random() * maxX);
     const randomY = Math.floor(Math.random() * maxY);
 
-    noBtn.style.position = "fixed";
     noBtn.style.left = randomX + "px";
     noBtn.style.top = randomY + "px";
 });
-
 // Close modal if user clicks outside of it
 window.onclick = function(event) {
     if (event.target == modal) {
