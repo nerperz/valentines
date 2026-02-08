@@ -5,16 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentines</title>
     <link rel="stylesheet" href="style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="wrapper">
-        <h2 class="question">Will You Be My Valentines?</h2>
-        <img class="gif" alt="gif" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtcZb-Fc-TojG3sIwqk4e6ejQVN3A2u8OOtg&usqp=CAU"/>
+        <h2 class="question">Will You Be My Valentine?</h2>
+        <div class="gif-container">
+            <img class="gif" alt="cute gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3Y2Ixdm80N2RyeGZ3Y2Ixdm80N2RyeGZ3Y2Ixdm80JnB0PTYmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PXM/S9SOfqO8sZInW89I69/giphy.gif"/>
+        </div>
         <div class="btn-group">
-            <button class="oo-btn">Oo</button>
-            <button class="diri-btn">Diri</button>
+            <button class="oo-btn">Yesss</button>
+            <button class="diri-btn">Hell Naw</button>
         </div>
     </div>
+
+    <div id="formModal" class="modal">
+        <div class="modal-content">
+            <h3>YAYYY! 💗</h3>
+            <p>Set our date details:</p>
+            <input type="text" id="dateWhen" placeholder="When? (e.g. Feb 14)">
+            <input type="text" id="dateWhere" placeholder="Where?">
+            <input type="time" id="dateTime">
+            <button id="sendBtn">Send 💌</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
