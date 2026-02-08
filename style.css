@@ -1,26 +1,19 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap');
 
-/* Custom Properties for easy editing */
 :root {
-  --primary-color: #6366f1;
-  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  --glass-bg: rgba(255, 255, 255, 0.8);
-  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-  --radius: 16px;
-  --transition: all 0.3s ease;
+  --primary-color: #ff4d6d; /* Romantic Pink/Red */
+  --secondary-color: #6366f1;
+  --bg-gradient: linear-gradient(135deg, #fce7f3 0%, #e0e7ff 100%);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --shadow: 0 8px 32px 0 rgba(255, 77, 109, 0.2);
+  --radius: 24px;
+  --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Smooth Global Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', -apple-system, sans-serif;
 }
 
 body {
@@ -29,42 +22,72 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #1e293b;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden; /* Prevents scrollbars if "No" button moves */
 }
 
-/* Glassmorphism Card Style */
 .card {
   background: var(--glass-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: var(--radius);
-  padding: 2rem;
+  padding: 3rem;
   box-shadow: var(--shadow);
-  max-width: 400px;
+  text-align: center;
+  max-width: 450px;
+  width: 90%;
   transition: var(--transition);
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
+.title {
+  font-family: 'Pacifico', cursive; /* That cute script font */
+  color: #ff4d6d;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
 }
 
-/* Modern Button with a pop */
+.main-img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+}
+
+.btn-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
 .btn {
-  background: var(--primary-color);
-  color: white;
-  padding: 12px 24px;
+  padding: 12px 28px;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 1rem;
+}
+
+.yes-btn {
+  background: var(--primary-color);
+  color: white;
+}
+
+.no-btn {
+  background: #cbd5e1;
+  color: #475569;
 }
 
 .btn:hover {
-  filter: brightness(1.1);
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* For your specific 'Hell Naw' button logic */
+#noBtn {
+    position: relative; /* Necessary if you're using JS to move it */
 }
