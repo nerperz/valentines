@@ -36,25 +36,22 @@ h2 {
     border-radius: 15px;
 }
 
+/* Ensure the text doesn't wrap inside the button */
 .btn-group {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    height: 50px;
-    position: relative; /* Container for the moving button */
+    align-items: center; /* Keeps them level */
+    gap: 20px;
+    height: 60px;
+    position: relative; 
 }
 
+/* Ensure the text doesn't wrap inside the button */
 button {
-    width: 150px;
-    height: 50px;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 600;
-    border-radius: 30px;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s;
-    background: #e94d58;
+    white-space: nowrap; 
+    padding: 10px 20px;
+    width: auto; /* Let the button fit the text "Hell Naw" */
+    min-width: 140px;
 }
 
 /* The 'No' button needs to be absolute ONLY when it starts moving */
