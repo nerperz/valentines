@@ -1,28 +1,28 @@
 const question = document.querySelector(".question");
 const gif = document.querySelector(".gif");
-const yesBtn = document.querySelector(".oo-btn");
-const noBtn = document.querySelector(".diri-btn");
+const yesBtn = document.querySelector(".yes-btn");
+const noBtn = document.querySelector(".no-btn");
 const modal = document.getElementById("formModal");
 const sendBtn = document.getElementById("sendBtn");
 
-// 1. When Yes is clicked
+// 1. When 'Yesss' is clicked
 yesBtn.addEventListener("click", () => {
     question.innerHTML = "YAYYY 💗💗💗💓💓";
     gif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3Y2Ixdm80N2RyeGZ3Y2Ixdm80N2RyeGZ3Y2Ixdm80JnB0PTYmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PXM/S9SOfqO8sZInW89I69/giphy.gif";
     
-    // Show the popup after a small delay
+    // Open the form modal after 1 second
     setTimeout(() => {
         modal.style.display = "flex";
     }, 1000);
 });
 
-// 2. Make the "Diri" button run away
+// 2. The 'No' button run-away logic
 noBtn.addEventListener('mouseover', () => {
-    const noBtnRect = noBtn.getBoundingClientRect();
+    // Switch to absolute positioning so it can fly anywhere
+    noBtn.style.position = "absolute";
     
-    // Calculate boundaries so it doesn't leave the screen
-    const maxX = window.innerWidth - noBtnRect.width;
-    const maxY = window.innerHeight - noBtnRect.height;
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
 
     const randomX = Math.floor(Math.random() * maxX);
     const randomY = Math.floor(Math.random() * maxY);
@@ -31,31 +31,27 @@ noBtn.addEventListener('mouseover', () => {
     noBtn.style.top = randomY + "px";
 });
 
-// 3. Collect form data and "Save to Excel" (CSV)
+// 3. Form Submission (Saves to a CSV/Excel file)
 sendBtn.addEventListener("click", () => {
     const when = document.getElementById("dateWhen").value;
     const where = document.getElementById("dateWhere").value;
     const time = document.getElementById("dateTime").value;
 
     if (!when || !where || !time) {
-        alert("Please fill everything out! ❤️");
+        alert("Wait! Fill out all the details first! ❤️");
         return;
     }
 
-    // Prepare CSV content
-    const csvContent = "data:text/csv;charset=utf-8," 
-        + "When,Where,Time\n" 
-        + `${when},${where},${time}`;
-
-    // Create a hidden link to trigger download
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "date_details.csv");
-    document.body.appendChild(link);
-
-    link.click(); // This downloads the file
+    // Creating the data for Excel
+    const csvData = `When,Where,Time\n${when},${where},${time}`;
+    const blob = new Blob([csvData], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
     
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'valentine_date.csv';
+    a.click();
+
     modal.style.display = "none";
-    alert("Details sent! See you then! 😍");
+    alert("Details 'saved'! (Check your downloads) See you then! 😍");
 });
