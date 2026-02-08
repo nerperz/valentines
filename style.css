@@ -1,103 +1,63 @@
+/* Custom Properties for easy editing */
+:root {
+  --primary-color: #6366f1;
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  --radius: 16px;
+  --transition: all 0.3s ease;
+}
+
+/* Smooth Global Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, sans-serif;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: radial-gradient(circle, #000000, #1a0000); /* Darker, cleaner theme */
-    overflow: hidden;
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1e293b;
 }
 
-.wrapper {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.1); /* Glass effect */
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+/* Glassmorphism Card Style */
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  max-width: 400px;
+  transition: var(--transition);
 }
 
-h2 {
-    font-family: 'Pacifico', cursive;
-    font-size: 2.8rem;
-    color: #e94d58;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
 }
 
-.gif-container {
-    height: 200px;
-    margin-bottom: 30px;
+/* Modern Button with a pop */
+.btn {
+  background: var(--primary-color);
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.gif {
-    max-height: 100%;
-    border-radius: 15px;
-}
-
-.btn-group {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    min-height: 60px;
-}
-
-button {
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s;
-    z-index: 10; /* Keeps buttons above the background */
-}
-
-.yes-btn {
-    background: #e94d58;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 50px;
-    font-size: 1.2rem;
-}
-
-.no-btn {
-    background: white;
-    color: #e94d58;
-    border: 2px solid #e94d58;
-    padding: 12px 30px;
-    border-radius: 50px;
-    font-size: 1.2rem;
-}
-
-/* Modal styling is fine as you had it */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
+.btn:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
 }
