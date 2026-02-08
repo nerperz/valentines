@@ -10,33 +10,25 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: radial-gradient(circle, #ffdee9 0%, #b5fffc 100%); /* Soft Pink/Blue gradient */
+    background: #000; /* Keeping your black theme but cleaner */
     overflow: hidden;
 }
 
 .wrapper {
     text-align: center;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    backdrop-filter: blur(5px);
-    border: 2px solid white;
+    padding: 20px;
 }
 
 h2 {
     font-family: 'Pacifico', cursive;
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: #e94d58;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .gif-container {
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+    height: 250px;
+    margin-bottom: 30px;
 }
 
 .gif {
@@ -45,73 +37,62 @@ h2 {
 }
 
 .btn-group {
-    position: relative;
-    width: 100%;
-    height: 60px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 20px;
+    gap: 30px;
+    height: 50px;
+    position: relative; /* Container for the moving button */
 }
 
 button {
-    width: 120px;
+    width: 150px;
     height: 50px;
     color: white;
     font-size: 1.2rem;
     font-weight: 600;
-    border-radius: 50px;
+    border-radius: 30px;
     border: none;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 15px rgba(233, 77, 88, 0.3);
-}
-
-.oo-btn {
+    transition: transform 0.2s;
     background: #e94d58;
 }
 
-/* This is the important change for the moving button */
-.diri-btn {
-    background: #555;
-    position: absolute; /* Needed for the JS movement */
-    left: 55%; /* Starting position */
-}
-
-button:hover {
-    transform: scale(1.1);
+/* The 'No' button needs to be absolute ONLY when it starts moving */
+.no-btn {
+    background: #e94d58;
 }
 
 /* Modal Styling */
 .modal {
-    display: none; /* Hidden by default */
+    display: none; /* Hidden until Yes is clicked */
     position: fixed;
-    z-index: 100;
+    z-index: 999;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
 }
 
 .modal-content {
     background: white;
-    padding: 30px;
+    padding: 40px;
     border-radius: 20px;
-    width: 300px;
+    width: 320px;
     display: flex;
     flex-direction: column;
     gap: 15px;
     text-align: center;
 }
 
+.modal-content h3 { color: #e94d58; }
+
 .modal-content input {
-    padding: 10px;
-    border: 1px solid #ddd;
+    padding: 12px;
+    border: 1px solid #ccc;
     border-radius: 10px;
-    outline: none;
 }
 
 #sendBtn {
