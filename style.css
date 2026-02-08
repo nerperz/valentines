@@ -91,3 +91,42 @@ body {
 #noBtn {
     position: relative; /* Necessary if you're using JS to move it */
 }
+
+/* --- Modal Fixes --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Dim the background */
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 400px;
+    width: 90%;
+}
+
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+input {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 77, 109, 0.3);
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+input:focus {
+    border-color: var(--primary-color);
+}
