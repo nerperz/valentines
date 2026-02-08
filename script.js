@@ -17,17 +17,23 @@ yesBtn.addEventListener("click", () => {
 });
 
 noBtn.addEventListener('mouseover', () => {
-    // Calculate the button size so it stays inside the edges
+    // 1. Switch to fixed position ONLY when hovered
+    noBtn.style.position = "fixed"; 
+
+    // 2. Get button dimensions
     const btnWidth = noBtn.offsetWidth;
     const btnHeight = noBtn.offsetHeight;
 
-    // Boundary calculation
-    const maxX = window.innerWidth - btnWidth - 20;
-    const maxY = window.innerHeight - btnHeight - 20;
+    // 3. Define safe boundaries (padding of 20px from edges)
+    const padding = 20;
+    const maxX = window.innerWidth - btnWidth - padding;
+    const maxY = window.innerHeight - btnHeight - padding;
 
-    const randomX = Math.floor(Math.random() * maxX);
-    const randomY = Math.floor(Math.random() * maxY);
+    // 4. Ensure the random number is at least 'padding' so it doesn't hit the left/top edge
+    const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+    const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
 
+    // 5. Apply the new position
     noBtn.style.left = randomX + "px";
     noBtn.style.top = randomY + "px";
 });
