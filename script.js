@@ -5,7 +5,6 @@ const noBtn = document.querySelector(".no-btn");
 const modal = document.getElementById("formModal");
 const sendBtn = document.getElementById("sendBtn");
 
-// Stable GIF link
 const happyGif = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3Y2Ixdm80N2RyeGZ3Y2Ixdm80N2RyeGZ3Y2Ixdm80JnB0PTYmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PXM/S9SOfqO8sZInW89I69/giphy.gif";
 
 yesBtn.addEventListener("click", () => {
@@ -17,21 +16,27 @@ yesBtn.addEventListener("click", () => {
     }, 1000);
 });
 
-// Improved Run-away logic
+// "Hell Naw" Run-away Logic
 noBtn.addEventListener('mouseover', () => {
-    // Set position to fixed so it stays relative to the whole screen
-    noBtn.style.position = "fixed"; 
-    
-    // Calculate space, avoiding edges
-    const maxX = window.innerWidth - noBtn.offsetWidth - 50;
-    const maxY = window.innerHeight - noBtn.offsetHeight - 50;
+    const noBtnRect = noBtn.getBoundingClientRect();
+    const maxX = window.innerWidth - noBtnRect.width;
+    const maxY = window.innerHeight - noBtnRect.height;
 
-    const randomX = Math.max(50, Math.floor(Math.random() * maxX));
-    const randomY = Math.max(50, Math.floor(Math.random() * maxY));
+    // Generate random positions within the visible viewport
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
 
+    noBtn.style.position = "fixed";
     noBtn.style.left = randomX + "px";
     noBtn.style.top = randomY + "px";
 });
+
+// Close modal if user clicks outside of it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 sendBtn.addEventListener("click", () => {
     const when = document.getElementById("dateWhen").value;
@@ -43,7 +48,6 @@ sendBtn.addEventListener("click", () => {
         return;
     }
 
-    // CSV Generation
     const csvData = `When,Where,Time\n${when},${where},${time}`;
     const blob = new Blob([csvData], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
@@ -53,8 +57,6 @@ sendBtn.addEventListener("click", () => {
     a.click();
 
     modal.style.display = "none";
-    
-    // THE FINAL INSTRUCTION MESSAGE
-    question.innerHTML = "PLS SEND THE FILE TO THE PERSON WHO SENT U THE LINK! 💌";
+    question.innerHTML = "SEND THE FILE TO ME! 💌";
     alert("DONE! PLEASE SEND THE DOWNLOADED FILE TO THE PERSON WHO SENT U THE LINK!");
 });
